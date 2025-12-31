@@ -1,0 +1,93 @@
+.window {
+    position: absolute;
+    background-color: var(--sys-gray-300);
+    border: 1px solid var(--sys-gray-900);
+    box-shadow:
+        var(--window-shadow),
+        var(--bevel-outset);
+    padding: 3px;
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+    min-height: 200px;
+}
+
+.title-bar {
+    height: 24px;
+    background-color: var(--sys-gray-300);
+    border: 1px solid var(--sys-gray-900);
+    margin-bottom: 2px;
+    display: flex;
+    align-items: center;
+    padding: 0 4px;
+    cursor: grab;
+    position: relative;
+}
+
+.title-bar:active {
+    cursor: grabbing;
+}
+
+.window.active .title-bar {
+    background-color: var(--sys-blue);
+    color: var(--sys-white);
+}
+
+.window.active .title-text {
+    background-color: var(--sys-blue);
+    color: var(--sys-white);
+}
+
+.window.active .title-lines {
+    background-image: linear-gradient(to bottom,
+            var(--sys-white) 1px,
+            transparent 1px);
+}
+
+/* Retro lines background for title bar */
+.title-lines {
+    flex-grow: 1;
+    height: 100%;
+    margin-left: 8px;
+    background-image: linear-gradient(to bottom,
+            var(--sys-gray-900) 1px,
+            transparent 1px);
+    background-size: 100% 4px;
+    /* Creates horizontal stripes */
+    z-index: 0;
+}
+
+.title-text {
+    background-color: var(--sys-gray-300);
+    padding: 0 8px;
+    font-weight: bold;
+    font-size: 14px;
+    z-index: 1;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.close-btn {
+    width: 14px;
+    height: 14px;
+    background-color: var(--sys-gray-100);
+    border: 1px solid var(--sys-gray-900);
+    box-shadow: inset -1px -1px 0 var(--sys-gray-500);
+    cursor: pointer;
+    z-index: 2;
+}
+
+.close-btn:active {
+    background-color: var(--sys-gray-900);
+}
+
+.window-content {
+    flex-grow: 1;
+    background-color: var(--sys-white);
+    border: 1px solid var(--sys-gray-900);
+    box-shadow: var(--bevel-inset);
+    padding: var(--spacing-4);
+    overflow: auto;
+    position: relative;
+}

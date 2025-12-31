@@ -1,0 +1,41 @@
+.menubar {
+    height: 28px;
+    background-color: var(--sys-gray-100);
+    border-bottom: 2px solid var(--sys-gray-900);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 var(--spacing-4);
+    font-size: 14px;
+    font-weight: bold;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: var(--z-menubar);
+    box-shadow: 0 1px 0 var(--sys-gray-500);
+}
+
+.menubar-left {
+    display: flex;
+    gap: var(--spacing-4);
+}
+
+.menubar-item {
+    padding: 0 var(--spacing-2);
+    cursor: default;
+}
+
+.menubar-item:active,
+.menubar-item.active:hover {
+    background-color: var(--sys-blue);
+    color: var(--sys-white);
+}
+
+.menubar-clock {
+    cursor: default;
+}
+
+.apple-logo {
+    font-size: 16px;
+}

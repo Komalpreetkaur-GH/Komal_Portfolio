@@ -1,0 +1,7 @@
+.desktop {
+    width: 100%;
+    height: calc(100vh - 28px);
+    margin-top: 28px;
+    position: relative;
+    /* Background is handled in global.css for the body, but we could play with it here too */
+}
