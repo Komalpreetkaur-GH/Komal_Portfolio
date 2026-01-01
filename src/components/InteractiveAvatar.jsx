@@ -52,7 +52,9 @@ class Shard {
         }
         ctx.closePath();
         // Use the passed color with the shard's life for opacity
-        ctx.fillStyle = `rgba(0, 0, 0, ${this.life})`;
+        ctx.fillStyle = shardColor.startsWith('#')
+            ? `${shardColor}${Math.floor(this.life * 255).toString(16).padStart(2, '0')}`
+            : `rgba(0, 0, 0, ${this.life})`;
         ctx.fill();
         ctx.restore();
     }
@@ -66,18 +68,18 @@ const InteractiveAvatar = () => {
 
     // List of avatar images - Using the user's provided set from public/ folder
     const images = [
-        '/avatar1.jpeg',
-        '/avatar2.jpeg',
-        '/avatar3.jpeg',
-        '/avatar4.jpeg',
-        '/avatar5.jpeg',
-        '/avatar6.jpeg',
-        '/avatar7.jpeg',
-        '/avatar8.jpeg',
-        '/avatar9.jpeg',
-        '/avatar10.jpeg',
-        '/avatar11.jpeg',
-        '/avatar12.jpeg'
+        '/avatar1.png',
+        '/avatar2.png',
+        '/avatar3.png',
+        '/avatar4.png',
+        '/avatar5.png',
+        '/avatar6.png',
+        '/avatar7.png',
+        '/avatar8.png',
+        '/avatar9.png',
+        '/avatar10.png',
+        '/avatar11.png',
+        '/avatar12.png'
     ];
     const [imgIndex, setImgIndex] = useState(0);
 
@@ -101,8 +103,8 @@ const InteractiveAvatar = () => {
 
             shardsRef.current = shardsRef.current.filter(shard => {
                 shard.update();
-                // Pass the current dynamic color to shards
-                shard.draw(ctx, frameColors[colorIndex]);
+                // Reverted to default black shards as per user request
+                shard.draw(ctx);
                 return shard.life > 0;
             });
 
@@ -114,7 +116,7 @@ const InteractiveAvatar = () => {
             window.removeEventListener('resize', resize);
             cancelAnimationFrame(animationId);
         };
-    }, [colorIndex]);
+    }, []); // Removed colorIndex dependency since shards are black again
 
     const handleBurst = () => {
         // Change image and frame color on click
@@ -122,7 +124,7 @@ const InteractiveAvatar = () => {
         setColorIndex((prev) => (prev + 1) % frameColors.length);
 
         const rect = containerRef.current.getBoundingClientRect();
-        for (let i = 0; i < 35; i++) { // Increased from 20 to 35
+        for (let i = 0; i < 35; i++) {
             shardsRef.current.push(new Shard(
                 canvasRef.current,
                 rect.left + rect.width / 2,
