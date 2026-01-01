@@ -2,41 +2,51 @@
     position: relative;
     display: inline-block;
     line-height: 0;
-    border: 4px solid var(--border-color);
-    box-shadow: 8px 8px 0px var(--shadow-color);
+    /* Remove frame */
+    border: none;
+    box-shadow: none;
     cursor: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAgElEQVR4nO1VQQ6AMAhrG///tMQUnU0MYRwfoIOYAAAAASUVORK5CYII=') 16 16, help;
-    /* Maintain the "mystery" character feel */
     transition: transform 0.3s ease;
 }
 
 .gameboy-photo-container:hover {
-    transform: scale(1.02);
+    transform: scale(1.05);
 }
 
 .gameboy-photo {
-    filter: grayscale(100%) contrast(120%);
-    width: 220px;
-    /* Increased from 200px to zoom in */
+    /* Remove retro filters to show original video */
+    filter: none;
+
+    /* Increased size significantly */
+    width: 350px;
     height: auto;
     display: block;
-    mix-blend-mode: multiply;
-    opacity: 0.9;
+
+    /* Attempt to blend background if it's solid light/dark */
+    /* mix-blend-mode: multiply;  <-- Use this if video has white bg on light theme */
+    /* For now, removing distinct blend mode to show true colors unless user asks otherwise, 
+       but "without background" often implies multiplying white away. 
+       Let's try 'multiply' as it's often the best hack for "removing" white bg on light themes. 
+       But if the theme is dark, multiply hides everything. 
+       Let's stick to normal for now and let the user complain or check theme.
+       Actually, 'mix-blend-mode: multiply' was there. 
+       The user said "without any background". 
+       If the video is MP4, it has a background. 
+       I'll leave mix-blend-mode commented out or remove it to show full video, 
+       UNLESS the user specifically has a white-bg video and wants it transparent.
+       Let's try standard transparency first (assuming source might be good or user ignores box).
+    */
+    mix-blend-mode: normal;
+    opacity: 1;
 }
 
 .gameboy-photo-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--accent-color);
-    /* Tint color */
-    mix-blend-mode: hard-light;
-    /* Transforms grayscale to green scale */
-    pointer-events: none;
+    display: none;
+    /* Hide the green tint overlay */
 }
 
 /* Optional: Pixelate the image itself if it's high res */
+/* Removing pixelation if it's a high-res sticker */
 .gameboy-photo {
-    image-rendering: pixelated;
+    image-rendering: auto;
 }
