@@ -22,22 +22,17 @@
     height: auto;
     display: block;
 
-    /* Attempt to blend background if it's solid light/dark */
-    /* mix-blend-mode: multiply;  <-- Use this if video has white bg on light theme */
-    /* For now, removing distinct blend mode to show true colors unless user asks otherwise, 
-       but "without background" often implies multiplying white away. 
-       Let's try 'multiply' as it's often the best hack for "removing" white bg on light themes. 
-       But if the theme is dark, multiply hides everything. 
-       Let's stick to normal for now and let the user complain or check theme.
-       Actually, 'mix-blend-mode: multiply' was there. 
-       The user said "without any background". 
-       If the video is MP4, it has a background. 
-       I'll leave mix-blend-mode commented out or remove it to show full video, 
-       UNLESS the user specifically has a white-bg video and wants it transparent.
-       Let's try standard transparency first (assuming source might be good or user ignores box).
+    /* 
+       User wants "NO BACKGROUND" and "just body visible".
+       Since MP4s aren't transparent, we use blend modes to hide the video background.
+       Assuming a white/light background in the video based on common sticker usage.
+       If the video background is black, use 'screen' instead.
     */
-    mix-blend-mode: normal;
+    mix-blend-mode: multiply;
     opacity: 1;
+
+    /* Ensure no background color on the element itself interferes */
+    background: transparent;
 }
 
 .gameboy-photo-overlay {
