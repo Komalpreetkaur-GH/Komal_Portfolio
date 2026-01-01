@@ -1,0 +1,148 @@
+.home-container {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    background: transparent;
+}
+
+.strip-layout-container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    background: transparent;
+}
+
+.strip-section {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    display: flex;
+    flex-direction: row;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.strip-section.strip {
+    width: 60px;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(5px);
+}
+
+.strip-section.active {
+    flex: 1;
+    background: transparent;
+}
+
+.strip-section.strip:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Vertical Labels for Strips */
+.strip-label {
+    width: 60px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    writing-mode: vertical-rl;
+    text-transform: uppercase;
+    font-family: inherit;
+    font-weight: bold;
+    letter-spacing: 4px;
+    color: var(--border-color);
+    opacity: 0.6;
+    transition: opacity 0.3s;
+    user-select: none;
+    flex-shrink: 0;
+}
+
+.strip-section.active .strip-label {
+    opacity: 0.1;
+    pointer-events: none;
+    display: none;
+    /* Hide when expanded or keep as a subtle marker */
+}
+
+.strip-section.strip:hover .strip-label {
+    opacity: 1;
+    color: var(--accent-color);
+}
+
+.section-content-wrapper {
+    flex: 1;
+    height: 100%;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateX(100px);
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 48px;
+    box-sizing: border-box;
+}
+
+.strip-section.active .section-content-wrapper {
+    opacity: 1;
+    transform: translateX(0);
+    transition-delay: 0.3s;
+}
+
+.hero-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.hero-title {
+    font-size: clamp(40px, 8vw, 80px);
+    margin: 24px 0;
+    line-height: 1.1;
+    text-shadow: 6px 6px 0 var(--shadow-color);
+}
+
+.projects-section {
+    padding: 48px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.projects-section h2 {
+    text-align: center;
+    margin-bottom: 48px;
+    font-size: 32px;
+    text-decoration: underline;
+    text-decoration-color: var(--border-color);
+    text-decoration-thickness: 4px;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 48px;
+}
+
+@media (max-width: 768px) {
+    .strip-section.strip {
+        width: 40px;
+    }
+
+    .strip-label {
+        width: 40px;
+        font-size: 12px;
+    }
+
+    .section-content-wrapper {
+        padding: 20px;
+    }
+
+    .hero-section {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+}

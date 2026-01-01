@@ -1,49 +1,58 @@
 :root {
-  /* System Colors */
-  --sys-gray-100: #ffffff;
-  --sys-gray-200: #dddddd;
-  --sys-gray-300: #c0c0c0; /* Standard Window BG */
-  --sys-gray-400: #aaaaaa;
-  --sys-gray-500: #808080;
-  --sys-gray-900: #000000;
+  /* --- PRIMITIVES --- */
 
-  --sys-blue: #000080; /* Title Bar Blue */
-  --sys-highlight: #0000ff;
-  --sys-white: #ffffff;
+  /* Light Theme (Beige/Olive) */
+  --light-bg: #e2e6d6;
+  /* Paper */
+  --light-card: #eff4e6;
+  /* Slightly brighter paper */
+  --light-ink: #2b2b26;
+  /* Dark Olive/Black */
+  --light-accent: #4d503f;
+  /* Mid Olive */
+  --light-shadow: #8da378;
+  /* Green shadow */
 
-  /* Borders (Bevel Effect) */
-  --border-light: #ffffff;
-  --border-dark: #404040; /* Dark shadow for inset/outset */
-  --border-mid: #808080;
+  /* Dark Theme (Classic GB Green) */
+  --dark-bg: #0f380f;
+  /* Deepest Green */
+  --dark-card: #0f380f;
+  /* Same as BG for high contrast outline look */
+  --dark-ink: #9bbc0f;
+  /* Brightest Green */
+  --dark-accent: #8bac0f;
+  /* Mid Green */
+  --dark-shadow: #306230;
+  /* Dark Green shadow */
 
   /* Typography */
-  --font-sys: 'Chicago', 'Geneva', 'Verdana', sans-serif; /* Fallbacks */
-  --font-mono: 'Monaco', 'Courier New', monospace;
+  --font-pixel: 'Press Start 2P', cursive;
+  --font-main: var(--font-pixel);
 
   /* Spacing */
-  --spacing-1: 2px;
-  --spacing-2: 4px;
-  --spacing-3: 8px;
-  --spacing-4: 16px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 32px;
 
-  /* Window Properties */
-  --window-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
-  --bevel-outset: 
-    inset 1px 1px 0px var(--border-light),
-    inset -1px -1px 0px var(--border-dark),
-    inset 2px 2px 0px var(--sys-gray-200),
-    inset -2px -2px 0px var(--sys-gray-500);
-  
-  --bevel-inset: 
-    inset 1px 1px 0px var(--border-dark),
-    inset -1px -1px 0px var(--border-light),
-    inset 2px 2px 0px var(--sys-gray-500),
-    inset -2px -2px 0px var(--sys-gray-200);
+  /* --- SEMANTIC DEFAULTS (Light) --- */
+  --bg-color: var(--light-bg);
+  --card-bg: var(--light-card);
+  --text-color: var(--light-ink);
+  --border-color: var(--light-ink);
+  --accent-color: var(--light-accent);
+  --shadow-color: var(--light-shadow);
 
-  /* Layers */
-  --z-desktop: 0;
-  --z-icon: 10;
-  --z-window: 100;
-  --z-modal: 1000;
-  --z-menubar: 2000;
+  --scanline-color: rgba(43, 43, 38, 0.05);
+}
+
+/* --- DARK THEME OVERRIDES --- */
+[data-theme="dark"] {
+  --bg-color: var(--dark-bg);
+  --card-bg: var(--dark-card);
+  --text-color: var(--dark-ink);
+  --border-color: var(--dark-ink);
+  --accent-color: var(--dark-accent);
+  --shadow-color: var(--dark-shadow);
+
+  --scanline-color: rgba(0, 0, 0, 0.3);
 }

@@ -1,0 +1,51 @@
+.interactive-avatar-container {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewport='0 0 40 40' style='fill:black;font-family:Arial;font-weight:bold;font-size:30px;'><text x='50%' y='50%' dy='.35em' text-anchor='middle' fill='white' stroke='black' stroke-width='2'>?</text></svg>") 20 20, help;
+    z-index: 1001;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.interactive-avatar-container:hover {
+    transform: scale(1.1) rotate(-2deg);
+}
+
+.interactive-avatar-container:active {
+    transform: scale(0.95);
+}
+
+.avatar-frame {
+    width: 100%;
+    height: 100%;
+    border: 3px solid #00adef;
+    /* Match the blue in image */
+    border-radius: 10px;
+    overflow: hidden;
+    /* Changed to hidden to clip image padding */
+    background: #000;
+    position: relative;
+    box-shadow: 0 0 15px rgba(0, 173, 239, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6px;
+    /* Added padding to zoom out the image */
+    box-sizing: border-box;
+}
+
+.avatar-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+
+.avatar-shards-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 1000;
+}

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useMagnetic } from '../hooks/useMagnetic';
 import '../styles/Menubar.css';
 
 const Clock = () => {
@@ -16,15 +17,24 @@ const Clock = () => {
     );
 };
 
+const MagneticMenubarItem = ({ children, className = "" }) => {
+    const { ref, style } = useMagnetic({ radius: 60, tension: 0.2, friction: 0.75 });
+    return (
+        <div ref={ref} className={`menubar-item ${className}`} style={style}>
+            {children}
+        </div>
+    );
+};
+
 const Menubar = () => {
     return (
         <div className="menubar">
             <div className="menubar-left">
-                <div className="menubar-item apple-logo"></div>
-                <div className="menubar-item active">File</div>
-                <div className="menubar-item">Edit</div>
-                <div className="menubar-item">View</div>
-                <div className="menubar-item">Special</div>
+                <MagneticMenubarItem className="apple-logo"></MagneticMenubarItem>
+                <MagneticMenubarItem className="active">File</MagneticMenubarItem>
+                <MagneticMenubarItem>Edit</MagneticMenubarItem>
+                <MagneticMenubarItem>View</MagneticMenubarItem>
+                <MagneticMenubarItem>Special</MagneticMenubarItem>
             </div>
             <div className="menubar-right">
                 <Clock />

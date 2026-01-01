@@ -1,0 +1,54 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 90px;
+    display: flex;
+    justify-content: space-between;
+    padding: 24px 48px;
+    z-index: 1000;
+    background: transparent;
+    pointer-events: none;
+    /* Allow interaction with background */
+}
+
+.nav-brand {
+    pointer-events: auto;
+    /* Re-enable for avatar */
+}
+
+.nav-links {
+    pointer-events: auto;
+    /* Re-enable for links */
+}
+
+
+.nav-brand {
+    display: flex;
+    align-items: flex-start;
+}
+
+.nav-links {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+}
+
+.nav-links a {
+    color: var(--text-color);
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+/* Theme Toggle Button Style */
+.theme-toggle-btn {
+    background: transparent;
+    border: 2px solid var(--border-color);
+    box-shadow: 2px 2px 0 var(--shadow-color);
+    padding: 4px 8px;
+    cursor: pointer;
+    font-size: 10px;
+}

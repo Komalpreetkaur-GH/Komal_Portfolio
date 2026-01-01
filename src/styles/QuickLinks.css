@@ -1,0 +1,42 @@
+.quick-links-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    padding: 0;
+    border-bottom: 4px solid var(--border-color);
+    background: var(--bg-color);
+    transition: border-color 0.3s;
+}
+
+.quick-link-item {
+    flex: 1;
+    min-width: 140px;
+    padding: 20px;
+    background: var(--bg-color);
+    border-right: 4px solid var(--border-color);
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 12px;
+    transition: background 0.2s;
+}
+
+.quick-link-item:last-child {
+    border-right: none;
+}
+
+.quick-link-item:hover {
+    background: var(--card-bg);
+    filter: brightness(0.9);
+    /* Subtle dim/brighten */
+}
+
+.cursor {
+    opacity: 0;
+}
+
+.quick-link-item:hover .cursor {
+    opacity: 1;
+}

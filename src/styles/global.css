@@ -1,40 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 @import './variables.css';
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    user-select: none;
-    /* Desktop feel */
-    -webkit-font-smoothing: none;
-    /* Crisp pixels */
 }
 
 body {
-    font-family: var(--font-sys);
-    background-color: var(--sys-gray-500);
-    /* Classic Dither Pattern for Background */
-    background-image:
-        linear-gradient(45deg, #808080 25%, transparent 25%),
-        linear-gradient(-45deg, #808080 25%, transparent 25%),
-        linear-gradient(45deg, transparent 75%, #808080 75%),
-        linear-gradient(-45deg, transparent 75%, #808080 75%);
-    background-size: 4px 4px;
-    background-position: 0 0, 0 2px, 2px -2px, -2px 0px;
-
+    font-family: var(--font-main);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.5;
     width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-    /* Desktop shouldn't scroll globally */
+    overflow-x: hidden;
+    position: relative;
+    transition: background-color 0.3s, color 0.3s;
+    /* Smooth theme transition */
 }
 
 a {
     text-decoration: none;
-    color: inherit;
-    cursor: default;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+a:hover {
+    text-decoration: underline;
+    opacity: 0.8;
 }
 
 button {
-    cursor: pointer;
-    font-family: inherit;
+    font-family: var(--font-main);
+    background: var(--bg-color);
+    border: 4px solid var(--border-color);
+    box-shadow: 4px 4px 0px var(--shadow-color);
+    padding: 10px 16px;
+    color: var(--text-color);
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: 1px;
+    transition: all 0.1s;
+}
+
+button:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px var(--shadow-color);
 }
