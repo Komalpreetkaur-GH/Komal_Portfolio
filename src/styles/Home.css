@@ -97,6 +97,21 @@
     align-items: center;
     width: 100%;
     max-width: 1200px;
+    position: relative;
+    /* Anchor for absolute positioning */
+    height: 100%;
+    /* Ensure full height for positioning */
+}
+
+.hero-image {
+    position: absolute;
+    bottom: -60px;
+    /* Pull down to remove gap and touch bottom edge */
+    right: -48px;
+    /* Offset the parent padding (48px) to touch the viewport edge */
+    pointer-events: none;
+    /* Let clicks pass through if needed, though sticker might be interactive */
+    z-index: 10;
 }
 
 .hero-title {

@@ -17,22 +17,25 @@
     /* Remove retro filters to show original video */
     filter: none;
 
-    /* Increased size significantly */
-    width: 350px;
-    height: auto;
-    display: block;
-
     /* 
-       User wants "NO BACKGROUND" and "just body visible".
-       Since MP4s aren't transparent, we use blend modes to hide the video background.
-       Assuming a white/light background in the video based on common sticker usage.
-       If the video background is black, use 'screen' instead.
+       Sticker Styling:
+       - width: 500px -> Reduced to create top clearance.
+       - height: auto -> Maintain natural aspect ratio.
+       - Transparent background supported naturally by PNG.
     */
-    mix-blend-mode: multiply;
+    width: 500px;
+    height: auto;
+    object-fit: contain;
+
+    /* Removed oval border-radius */
+
+    display: block;
+    mix-blend-mode: normal;
     opacity: 1;
 
-    /* Ensure no background color on the element itself interferes */
-    background: transparent;
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
 }
 
 .gameboy-photo-overlay {

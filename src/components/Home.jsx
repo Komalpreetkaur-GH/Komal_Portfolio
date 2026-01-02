@@ -52,13 +52,10 @@ const Home = ({ theme, toggleTheme }) => {
                                         </div>
                                         <div className="hero-image">
                                             <div className="gameboy-photo-container">
-                                                <video
-                                                    src="/hero-wave.mp4"
+                                                <img
+                                                    src="/hero-wave.png"
+                                                    alt="Hero"
                                                     className="gameboy-photo"
-                                                    autoPlay
-                                                    loop
-                                                    muted
-                                                    playsInline
                                                 />
                                                 <div className="gameboy-photo-overlay"></div>
                                             </div>
