@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Navbar from './Navbar';
 import QuickLinks from './QuickLinks';
 import RetroCard from './RetroCard';
@@ -15,6 +15,39 @@ const Home = ({ theme, toggleTheme }) => {
         { id: 'skills', label: 'SKILLS' },
         { id: 'projects', label: 'QUESTS' }
     ];
+
+    const [typedText, setTypedText] = useState({ line1: '', line2: '' });
+
+    useEffect(() => {
+        const text1 = "KOMALPREET";
+        const text2 = "KAUR";
+        let i = 0;
+        let j = 0;
+        let timeoutId;
+
+        const typeLine1 = () => {
+            if (i < text1.length) {
+                setTypedText(prev => ({ ...prev, line1: text1.slice(0, i + 1) }));
+                i++;
+                timeoutId = setTimeout(typeLine1, 100);
+            } else {
+                timeoutId = setTimeout(typeLine2, 100);
+            }
+        };
+
+        const typeLine2 = () => {
+            if (j < text2.length) {
+                setTypedText(prev => ({ ...prev, line2: text2.slice(0, j + 1) }));
+                j++;
+                timeoutId = setTimeout(typeLine2, 100);
+            }
+        };
+
+        // Start typing after a short delay
+        timeoutId = setTimeout(typeLine1, 500);
+
+        return () => clearTimeout(timeoutId);
+    }, []);
 
     const scrollAccumulator = useRef(0); // Aggregate small deltas
 
@@ -94,7 +127,7 @@ const Home = ({ theme, toggleTheme }) => {
                                 {index === 0 && (
                                     <section className="hero-section">
                                         <div className="hero-content">
-                                            <h3 className="hero-title">KOMALPREET<br />KAUR</h3>
+                                            <h3 className="hero-title">{typedText.line1}<br />{typedText.line2}<span className="cursor-blink">|</span></h3>
                                             <br />
                                             <p className="hero-subtitle">
                                                 I’m a 22-year-old engineer from India working across machine learning, data science, and analytics to build data-driven systems.
