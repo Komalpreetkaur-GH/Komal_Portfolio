@@ -107,15 +107,22 @@
     position: absolute;
     bottom: -60px;
     /* Pull down to remove gap and touch bottom edge */
-    right: -48px;
+    right: -80px;
     /* Offset the parent padding (48px) to touch the viewport edge */
     pointer-events: none;
     /* Let clicks pass through if needed, though sticker might be interactive */
     z-index: 10;
 }
 
+.hero-content {
+    max-width: 70%;
+    /* Ensure text doesn't overlap with the 500px image */
+    z-index: 20;
+    /* Keep text above if needed */
+}
+
 .hero-title {
-    font-size: clamp(40px, 8vw, 80px);
+    font-size: 65px;
     margin: 24px 0;
     line-height: 1.1;
     text-shadow: 6px 6px 0 var(--shadow-color);

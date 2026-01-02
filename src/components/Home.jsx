@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Navbar from './Navbar';
 import QuickLinks from './QuickLinks';
 import RetroCard from './RetroCard';
+import PullCord from './PullCord';
 import '../styles/Home.css';
 import '../styles/GameboyPhoto.css';
 
@@ -17,9 +18,19 @@ const Home = ({ theme, toggleTheme }) => {
         setActiveIndex(index);
     };
 
+    // Calculate position for PullCord to stay clear of right-side strips
+    // 60px per strip. Gap of 30px (150px start - 120px strips).
+    const stripsOnRight = sections.length - 1 - activeIndex;
+    const rightPos = (stripsOnRight * 60) + 30;
+
     return (
         <div className="home-container">
             <Navbar theme={theme} toggleTheme={toggleTheme} />
+            <PullCord
+                toggleTheme={toggleTheme}
+                theme={theme}
+                style={{ right: rightPos + 'px' }}
+            />
 
             <div className="strip-layout-container">
                 {sections.map((section, index) => {
@@ -39,16 +50,11 @@ const Home = ({ theme, toggleTheme }) => {
                                 {index === 0 && (
                                     <section className="hero-section">
                                         <div className="hero-content">
-                                            <p className="hero-subtitle">PRESS START TO BEGIN</p>
-                                            <h1 className="hero-title">HELLO<br />WORLD</h1>
+                                            <h3 className="hero-title">KOMALPREET<br />KAUR</h3>
                                             <br />
                                             <p className="hero-subtitle">
-                                                CHARACTER: MAC<br />
-                                                LEVEL: 24<br />
-                                                CLASS: DEVELOPER
+                                                I’m a 22-year-old engineer from India working across machine learning, data science, and analytics to build data-driven systems.
                                             </p>
-                                            <br />
-                                            <button className="hero-cta" onClick={(e) => { e.stopPropagation(); handleSectionClick(1); }}>CONTINUE ▶</button>
                                         </div>
                                         <div className="hero-image">
                                             <div className="gameboy-photo-container">

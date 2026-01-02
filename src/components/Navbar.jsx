@@ -9,13 +9,7 @@ const Navbar = ({ theme, toggleTheme }) => {
                 <InteractiveAvatar />
             </div>
             <div className="nav-links">
-                <button
-                    className="theme-toggle-btn"
-                    onClick={toggleTheme}
-                    title={theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
-                >
-                    {theme === 'light' ? '🌙' : '☀️'}
-                </button>
+                {/* Theme toggle replaced by PullCord */}
             </div>
         </nav>
     );
