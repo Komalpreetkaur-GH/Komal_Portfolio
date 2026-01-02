@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Navbar from './Navbar';
 import QuickLinks from './QuickLinks';
 import RetroCard from './RetroCard';
@@ -8,11 +8,55 @@ import '../styles/GameboyPhoto.css';
 
 const Home = ({ theme, toggleTheme }) => {
     const [activeIndex, setActiveIndex] = useState(0);
+    const lastScrollTime = useRef(0); // For throttling scroll events
+
     const sections = [
         { id: 'hero', label: 'HOME' },
         { id: 'skills', label: 'SKILLS' },
         { id: 'projects', label: 'QUESTS' }
     ];
+
+    const scrollAccumulator = useRef(0); // Aggregate small deltas
+
+    const handleWheel = (e) => {
+        // Log to debug if event is firing
+        console.log("Wheel event:", e.deltaY, "Accumulator:", scrollAccumulator.current);
+
+        const now = Date.now();
+
+        // Accumulate deltaY
+        scrollAccumulator.current += e.deltaY;
+
+        const THRESHOLD = 50;
+
+        // Check if we are in a "cooldown" phase
+        if (now - lastScrollTime.current < 500) {
+            scrollAccumulator.current = 0;
+            return;
+        }
+
+        if (scrollAccumulator.current > THRESHOLD) {
+            // Scroll Down -> Next Section
+            if (activeIndex < sections.length - 1) {
+                console.log("Navigating NEXT");
+                setActiveIndex(prev => prev + 1);
+                lastScrollTime.current = now;
+                scrollAccumulator.current = 0;
+            } else {
+                scrollAccumulator.current = 0;
+            }
+        } else if (scrollAccumulator.current < -THRESHOLD) {
+            // Scroll Up -> Prev Section
+            if (activeIndex > 0) {
+                console.log("Navigating PREV");
+                setActiveIndex(prev => prev - 1);
+                lastScrollTime.current = now;
+                scrollAccumulator.current = 0;
+            } else {
+                scrollAccumulator.current = 0;
+            }
+        }
+    };
 
     const handleSectionClick = (index) => {
         setActiveIndex(index);
@@ -24,7 +68,7 @@ const Home = ({ theme, toggleTheme }) => {
     const rightPos = (stripsOnRight * 60) + 30;
 
     return (
-        <div className="home-container">
+        <div className="home-container" onWheel={handleWheel}>
             <Navbar theme={theme} toggleTheme={toggleTheme} />
             <PullCord
                 toggleTheme={toggleTheme}

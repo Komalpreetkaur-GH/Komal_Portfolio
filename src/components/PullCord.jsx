@@ -9,6 +9,10 @@ const PullCord = ({ toggleTheme, theme, style }) => {
 
         setIsPulling(true);
 
+        // Play sound effect
+        const audio = new Audio('/light-switch.mp3');
+        audio.play().catch(e => console.error("Audio play failed:", e));
+
         // Trigger theme change halfway through animation
         setTimeout(() => {
             toggleTheme();

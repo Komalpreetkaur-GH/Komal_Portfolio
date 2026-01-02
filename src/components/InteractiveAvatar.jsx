@@ -119,6 +119,10 @@ const InteractiveAvatar = () => {
     }, []); // Removed colorIndex dependency since shards are black again
 
     const handleBurst = () => {
+        // Play glass breaking sound
+        const audio = new Audio('/glass-breaking.mp3');
+        audio.play().catch(e => console.error("Audio play failed:", e));
+
         // Change image and frame color on click
         setImgIndex((prev) => (prev + 1) % images.length);
         setColorIndex((prev) => (prev + 1) % frameColors.length);
