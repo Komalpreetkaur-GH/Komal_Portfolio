@@ -1,29 +1,29 @@
 :root {
   /* --- PRIMITIVES --- */
 
-  /* Light Theme (Beige/Olive) */
-  --light-bg: #e2e6d6;
-  /* Paper */
-  --light-card: #eff4e6;
-  /* Slightly brighter paper */
-  --light-ink: #2b2b26;
-  /* Dark Olive/Black */
-  --light-accent: #4d503f;
-  /* Mid Olive */
-  --light-shadow: #8da378;
-  /* Green shadow */
+  /* Light Theme (Porcelain Paper - Clean Minimal) */
+  --light-bg: #f8f9fa;
+  /* Off-White/Porcelain */
+  --light-card: #ffffff;
+  /* Pure White */
+  --light-ink: #2d3436;
+  /* Soft Black */
+  --light-accent: #2d3436;
+  /* Black Accent */
+  --light-shadow: #dfe6e9;
+  /* Soft Grey Shadow */
 
-  /* Dark Theme (Classic GB Green) */
-  --dark-bg: #0f380f;
-  /* Deepest Green */
-  --dark-card: #0f380f;
-  /* Same as BG for high contrast outline look */
-  --dark-ink: #9bbc0f;
-  /* Brightest Green */
-  --dark-accent: #8bac0f;
-  /* Mid Green */
-  --dark-shadow: #306230;
-  /* Dark Green shadow */
+  /* Dark Theme (Premium Charcoal - Neutral) */
+  --dark-bg: #121212;
+  /* Deep Charcoal */
+  --dark-card: #1e1e1e;
+  /* Dark Slate */
+  --dark-ink: #e0e0e0;
+  /* Soft White */
+  --dark-accent: #a3a3a3;
+  /* Light Grey Accent */
+  --dark-shadow: #000000;
+  /* Pure Black Shadow */
 
   /* Typography */
   --font-pixel: 'Press Start 2P', cursive;

@@ -6,7 +6,7 @@
     height: 90px;
     display: flex;
     justify-content: space-between;
-    padding: 24px 20px;
+    padding: 16px 12px;
     /* Reduced to move avatar to left corner */
     z-index: 1000;
     background: transparent;

@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
 import Navbar from './Navbar';
 import QuickLinks from './QuickLinks';
+import Socials from './Socials';
+import FooterSocials from './FooterSocials';
 import RetroCard from './RetroCard';
 import PullCord from './PullCord';
 import '../styles/Home.css';
@@ -102,7 +104,7 @@ const Home = ({ theme, toggleTheme }) => {
 
     return (
         <div className="home-container" onWheel={handleWheel}>
-            <Navbar theme={theme} toggleTheme={toggleTheme} />
+            <Navbar theme={theme} toggleTheme={toggleTheme} activeIndex={activeIndex} />
             <PullCord
                 toggleTheme={toggleTheme}
                 theme={theme}
@@ -125,25 +127,29 @@ const Home = ({ theme, toggleTheme }) => {
 
                             <div className="section-content-wrapper">
                                 {index === 0 && (
-                                    <section className="hero-section">
-                                        <div className="hero-content">
-                                            <h3 className="hero-title">{typedText.line1}<br />{typedText.line2}<span className="cursor-blink">|</span></h3>
-                                            <br />
-                                            <p className="hero-subtitle">
-                                                I’m a 22-year-old engineer from India working across machine learning, data science, and analytics to build data-driven systems.
-                                            </p>
-                                        </div>
-                                        <div className="hero-image">
-                                            <div className="gameboy-photo-container">
-                                                <img
-                                                    src="/hero-wave.png"
-                                                    alt="Hero"
-                                                    className="gameboy-photo"
-                                                />
-                                                <div className="gameboy-photo-overlay"></div>
+                                    <>
+                                        <section className="hero-section">
+                                            <div className="hero-content">
+                                                <h3 className="hero-title">{typedText.line1}<br />{typedText.line2}<span className="cursor-blink">|</span></h3>
+                                                <br />
+                                                <p className="hero-subtitle">
+                                                    I’m a 22-year-old engineer from India working across machine learning, data science, and analytics to build data-driven systems.
+                                                </p>
+                                                <Socials onProjectsClick={() => handleSectionClick(2)} />
                                             </div>
-                                        </div>
-                                    </section>
+                                            <div className="hero-image">
+                                                <div className="gameboy-photo-container">
+                                                    <img
+                                                        src="/hero-wave.png"
+                                                        alt="Hero"
+                                                        className="gameboy-photo"
+                                                    />
+                                                    <div className="gameboy-photo-overlay"></div>
+                                                </div>
+                                            </div>
+                                        </section>
+                                        <FooterSocials />
+                                    </>
                                 )}
 
                                 {index === 1 && (
@@ -181,7 +187,7 @@ const Home = ({ theme, toggleTheme }) => {
                     );
                 })}
             </div>
-        </div>
+        </div >
     );
 };
 

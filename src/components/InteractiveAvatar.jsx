@@ -60,7 +60,7 @@ class Shard {
     }
 }
 
-const InteractiveAvatar = () => {
+const InteractiveAvatar = ({ theme }) => {
     const canvasRef = useRef(null);
     const containerRef = useRef(null);
     const shardsRef = useRef([]);
@@ -101,10 +101,11 @@ const InteractiveAvatar = () => {
         const animate = () => {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+            const shardColor = theme === 'dark' ? '#ffffff' : 'black';
+
             shardsRef.current = shardsRef.current.filter(shard => {
                 shard.update();
-                // Reverted to default black shards as per user request
-                shard.draw(ctx);
+                shard.draw(ctx, shardColor);
                 return shard.life > 0;
             });
 
@@ -116,7 +117,7 @@ const InteractiveAvatar = () => {
             window.removeEventListener('resize', resize);
             cancelAnimationFrame(animationId);
         };
-    }, []); // Removed colorIndex dependency since shards are black again
+    }, [theme]);
 
     const handleBurst = () => {
         // Play glass breaking sound
