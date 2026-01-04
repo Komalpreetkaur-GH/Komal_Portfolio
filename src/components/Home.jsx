@@ -3,7 +3,9 @@ import Navbar from './Navbar';
 import QuickLinks from './QuickLinks';
 import Socials from './Socials';
 import FooterSocials from './FooterSocials';
-import RetroCard from './RetroCard';
+
+import ContactContent from './ContactContent';
+import StickerBelt from './StickerBelt';
 import PullCord from './PullCord';
 import '../styles/Home.css';
 import '../styles/GameboyPhoto.css';
@@ -15,7 +17,7 @@ const Home = ({ theme, toggleTheme }) => {
     const sections = [
         { id: 'hero', label: 'HOME' },
         { id: 'skills', label: 'SKILLS' },
-        { id: 'projects', label: 'QUESTS' }
+        { id: 'contact', label: "LET'S CONNECT" }
     ];
 
     const [typedText, setTypedText] = useState({ line1: '', line2: '' });
@@ -156,29 +158,26 @@ const Home = ({ theme, toggleTheme }) => {
                                     <section className="quick-links-section">
                                         <h3>SELECT MODE</h3>
                                         <QuickLinks />
-                                        <button className="hero-cta" onClick={(e) => { e.stopPropagation(); handleSectionClick(2); }} style={{ marginTop: '50px' }}>VIEW QUEST LOG</button>
+                                        <button className="hero-cta" onClick={(e) => { e.stopPropagation(); handleSectionClick(2); }} style={{ marginTop: '50px' }}>LET'S CONNECT</button>
                                     </section>
                                 )}
 
                                 {index === 2 && (
-                                    <section className="projects-section" id="projects">
-                                        <h2>QUEST LOG</h2>
-                                        <div className="projects-grid">
-                                            <RetroCard title="PROJECT 01" date="2020-04-08" onAction={() => { }}>
-                                                <div className="card-image-placeholder" style={{ height: '150px', background: 'var(--gb-dark)', opacity: 0.5 }}></div>
-                                                <div className="card-text">
-                                                    <h3>POSSIMUS</h3>
-                                                    <p>A challenging dungeon crawler built with React.</p>
-                                                </div>
-                                            </RetroCard>
-
-                                            <RetroCard title="PROJECT 02" date="2020-04-08" onAction={() => { }}>
-                                                <div className="card-image-placeholder" style={{ height: '150px', background: 'var(--gb-dark)', opacity: 0.5 }}></div>
-                                                <div className="card-text">
-                                                    <h3>DOLORUM</h3>
-                                                    <p>Inventory management system for shops.</p>
-                                                </div>
-                                            </RetroCard>
+                                    <section className="contact-section" id="contact">
+                                        <h2>LET'S CONNECT</h2>
+                                        <div style={{ maxWidth: '600px', margin: '0 auto', position: 'relative', height: '100%' }}>
+                                            <ContactContent />
+                                        </div>
+                                        <div style={{
+                                            position: 'absolute',
+                                            bottom: '0px',
+                                            left: '50%',
+                                            transform: 'translateX(-50%)',
+                                            width: '100%',
+                                            maxWidth: '600px',
+                                            pointerEvents: 'none' // Ensure clicks pass through wrapper, but catch on children if enabled
+                                        }}>
+                                            <StickerBelt />
                                         </div>
                                     </section>
                                 )}

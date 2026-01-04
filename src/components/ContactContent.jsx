@@ -1,54 +1,99 @@
+import React from 'react';
+import { FaEnvelope, FaLinkedin, FaGithub, FaCalendarAlt } from 'react-icons/fa';
+
 const ContactContent = () => {
+    const links = [
+        {
+            label: "Email",
+            icon: <FaEnvelope />,
+            url: "mailto:komalpreetkaur.jassal@gmail.com",
+            text: "komalpreetkaur.jassal@gmail.com"
+        },
+        {
+            label: "LinkedIn",
+            icon: <FaLinkedin />,
+            url: "https://www.linkedin.com/in/komalpreet-kaur-jassal", // Replace with actual
+            text: "/in/komalpreet-kaur-jassal"
+        },
+        {
+            label: "GitHub",
+            icon: <FaGithub />,
+            url: "https://github.com/Komalpreetkaur-GH",
+            text: "@Komalpreetkaur-GH"
+        },
+        {
+            label: "Schedule a Chat",
+            icon: <FaCalendarAlt />,
+            url: "#", // Replace with calendly link
+            text: "15-min Coffee Chat"
+        }
+    ];
+
     return (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-            <p>Send me a digital letter:</p>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                <label style={{ fontSize: '12px', fontWeight: 'bold' }}>To:</label>
-                <input
-                    type="text"
-                    value="me@portfolio.com"
-                    disabled
-                    style={{
-                        border: '1px solid var(--sys-gray-900)',
-                        padding: '4px',
-                        fontFamily: 'var(--font-mono)'
-                    }}
-                />
+        <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '30px',
+            textAlign: 'center',
+            alignItems: 'center',
+            height: '100%',
+            justifyContent: 'center',
+            paddingBottom: '100px' // Space for sticker belt
+        }}>
+            <p style={{
+                fontSize: '18px',
+                maxWidth: '400px',
+                lineHeight: '1.6',
+                margin: '0 auto',
+                color: 'var(--text-color)',
+                opacity: 0.9
+            }}>
+                Open to internships, ML roles, and collaborations.
+            </p>
+
+            <div style={{
+                display: 'grid',
+                gridTemplateColumns: '1fr',
+                gap: '15px',
+                width: '100%',
+                maxWidth: '350px'
+            }}>
+                {links.map((link, index) => (
+                    <a
+                        key={index}
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="contact-btn"
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '12px',
+                            padding: '12px 20px',
+                            background: 'rgba(0,0,0,0.05)',
+                            border: '1px solid var(--border-color)',
+                            borderRadius: '8px',
+                            textDecoration: 'none',
+                            color: 'var(--text-color)',
+                            transition: 'all 0.3s ease',
+                            fontSize: '16px',
+                            fontWeight: '500'
+                        }}
+                    >
+                        <span style={{ fontSize: '20px' }}>{link.icon}</span>
+                        <span>{link.label}</span>
+                    </a>
+                ))}
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                <label style={{ fontSize: '12px', fontWeight: 'bold' }}>Subject:</label>
-                <input
-                    type="text"
-                    style={{
-                        border: '1px solid var(--sys-gray-900)',
-                        padding: '4px',
-                        fontFamily: 'var(--font-mono)'
-                    }}
-                />
-            </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                <label style={{ fontSize: '12px', fontWeight: 'bold' }}>Message:</label>
-                <textarea
-                    rows="5"
-                    style={{
-                        border: '1px solid var(--sys-gray-900)',
-                        padding: '4px',
-                        fontFamily: 'var(--font-mono)',
-                        resize: 'none'
-                    }}
-                />
-            </div>
-            <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '10px' }}>
-                <button style={{
-                    border: '2px outset var(--sys-gray-100)',
-                    background: 'var(--sys-gray-300)',
-                    padding: '4px 16px',
-                    fontWeight: 'bold',
-                    active: { borderStyle: 'inset' }
-                }}>
-                    Send
-                </button>
-            </div>
+
+            <style jsx>{`
+                .contact-btn:hover {
+                    background: var(--text-color) !important;
+                    color: var(--bg-color) !important;
+                    transform: translateY(-2px);
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+                }
+            `}</style>
         </div>
     );
 };

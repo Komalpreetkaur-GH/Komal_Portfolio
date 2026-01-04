@@ -148,13 +148,13 @@
     text-shadow: 6px 6px 0 var(--shadow-color);
 }
 
-.projects-section {
-    padding: 48px;
+.contact-section {
+    padding: 48px 48px 0px 48px;
     width: 100%;
     max-width: 1200px;
 }
 
-.projects-section h2 {
+.contact-section h2 {
     text-align: center;
     margin-bottom: 48px;
     font-size: 32px;
@@ -163,11 +163,7 @@
     text-decoration-thickness: 4px;
 }
 
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 48px;
-}
+
 
 @media (max-width: 768px) {
     .strip-section.strip {
